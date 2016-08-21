@@ -1,0 +1,8 @@
+mkdir WordcountClasses/
+
+sudo javac -cp $(echo ./share/hadoop/common/*.jar | tr ' ' ':'):$(echo ./share/hadoop/common/lib/*.jar | tr ' ' ':'):$(echo ./share/hadoop/mapreduce/*.jar | tr ' ' ':'):$(./share/hadoop/mapreduce/lib/*.jar | tr ' ' ':')::$(./share/hadoop/mapreduce/*.jar | tr ' ' ':')::$(./share/hadoop/yarn/*.jar | tr ' ' ':')::$(./share/hadoop/yarn/lib/*.jar | tr ' ' ':')  -d WordcountClasses/ WordCount.java
+
+jar cvf WordCount.jar -C WordcountClasses/ .
+
+hadoop jar WordCount.jar WordCount /user/sdhandap/input /user/sdhandap/output
+
